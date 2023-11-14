@@ -1,11 +1,8 @@
 import swal from "sweetalert";
-const CardItem = ({ cartItem }) => {
-  const getCartItem = JSON.parse(localStorage.getItem("cart"));
+const CardItem = ({ cartItem,cart,setCart }) => {
   const { title, thumbnail, price, brand, id } = cartItem || {};
 
   const handleDelete = (id) => {
-    let remainCartItem = getCartItem.filter((p) => p.id !== id);
-    localStorage.setItem("cart", JSON.stringify(remainCartItem));
     swal({
       title: "Are you sure?",
       text: "Once deleted, you will not be able to recover this product!",
@@ -17,7 +14,11 @@ const CardItem = ({ cartItem }) => {
         swal("Poof! Your Product has been deleted!", {
           icon: "success",
         });
+        const remainCart =  cart.filter(item=> item.id !== id)
+        setCart(remainCart)
+        localStorage.setItem('cart',JSON.stringify(remainCart))
       }
+
     });
   };
   return (

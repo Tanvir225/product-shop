@@ -6,9 +6,11 @@ import {
 } from "react-icons/ai";
 import { NavLink } from "react-router-dom";
 import "./Navbar.css";
+
 const Navbar = () => {
+
   return (
-    <div className="btm-nav sticky bg-purple-600 mt-10 text-white font-semibold">
+    <div className="btm-nav sticky bg-purple-600 mt-10 text-white font-semibold z-20">
       <NavLink to={"/"}>
         <AiOutlineHome></AiOutlineHome>
         <span className="btm-nav-label">Home</span>

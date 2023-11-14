@@ -11,9 +11,10 @@ const ProductCard = () => {
   }
 
   const handleBuy = () => {
-    const getItem = JSON.parse(localStorage.getItem('cart'));
+    const getItem = JSON.parse(localStorage.getItem('cart') || "[]");
     if (!getItem) {
-      localStorage.setItem('cart', JSON.stringify([product]))
+      getItem.push(product)
+      localStorage.setItem('cart', JSON.stringify(getItem))
       swal("Good Job!","Your product added at cart!","success")
     }
     else {
